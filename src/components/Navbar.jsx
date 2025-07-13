@@ -12,7 +12,7 @@ export default function Navbar() {
       <Link to="/search">Search</Link>
       {user && <>
         <Link to="/create">Create</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile">Profile</Link>  
         <button onClick={logout}>Logout</button>
       </>}
       <ThemeToggle />
