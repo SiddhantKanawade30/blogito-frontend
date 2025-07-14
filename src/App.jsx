@@ -1,10 +1,12 @@
 import React from 'react'
 import Hero from './pages/Hero'
+import Manager from './pages/Manager'
 
 const App = () => {
   return (
     <div>
-      <Hero />
+      {/* <Hero /> */}
+      <Manager />
     </div>
   )
 }
