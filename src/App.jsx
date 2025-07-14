@@ -5,8 +5,8 @@ import Manager from './pages/Manager'
 const App = () => {
   return (
     <div>
-      {/* <Hero /> */}
-      <Manager />
+      <Hero />
+      {/* <Manager /> */}
     </div>
   )
 }

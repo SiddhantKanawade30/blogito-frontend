@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Home,
   PlusCircle,
@@ -11,6 +13,7 @@ import {
 
 const SideNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+   const navigate = useNavigate();
 
   return (
     <>
@@ -34,10 +37,22 @@ const SideNavbar = () => {
 
         {/* Navigation */}
         <nav className="mt-4 flex flex-col space-y-2 px-4">
-          <NavItem icon={<Home size={20} />} label="Feed" />
+            <div onClick={()=> navigate("/feed")}>
+          <NavItem icon={<Home size={20} />} label="Feed"  />
+            </div>
+
+            <div onClick={()=> navigate("/create")}>
           <NavItem icon={<PlusCircle size={20} />} label="Create" />
+            </div>
+
+            <div onClick={()=> navigate("/profile")}>
           <NavItem icon={<User size={20} />} label="Profile" />
+          </div>
+
+          <div onClick={()=> navigate("/settings")}>
           <NavItem icon={<Settings size={20} />} label="Settings" />
+          </div>
+
         </nav>
 
         {/* Logout */}
