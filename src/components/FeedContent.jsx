@@ -99,7 +99,7 @@ const FeedContent = () => {
                         </span>
                       </div>
                       <div>
-                        <p className="font-medium text-gray-900">{user.name}</p>
+                        <p className="font-medium text-gray-900">{user.username}</p>
                         <p className="text-sm text-gray-600">{user.email}</p>
                       </div>
                     </div>
@@ -125,7 +125,7 @@ const FeedContent = () => {
                     </span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">{post.author?.name || 'Anonymous'}</p>
+                    <p className="font-semibold text-gray-900">{post.author?.username || 'Anonymous'}</p>
                     <div className="flex items-center space-x-2 text-sm text-gray-600">
                       <Clock className="h-4 w-4" />
                       <span>{formatDate(post.createdAt)}</span>

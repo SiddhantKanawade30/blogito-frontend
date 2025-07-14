@@ -27,13 +27,13 @@ const CreateBlog = () => {
     setMessage('');
 
     try {
-      const tagsArray = blogData.tags ? blogData.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
+      // Convert comma-separated tags into an array
+      const tagsArray = blogData.tags 
+        ? blogData.tags.split(',').map(tag => tag.trim()).filter(tag => tag) 
+        : [];
       
-      await blogAPI.createBlog({
-        title: blogData.title,
-        content: blogData.content,
-        tags: tagsArray,
-      });
+      // Create the blog post
+      await blogAPI.createBlog(blogData.title, blogData.content, tagsArray);
 
       setMessage('Blog post created successfully!');
       setBlogData({ title: '', content: '', tags: '' });

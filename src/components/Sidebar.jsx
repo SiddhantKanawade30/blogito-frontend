@@ -28,7 +28,7 @@ const Sidebar = ({ activeSection, onSectionChange, user }) => {
             </span>
           </div>
           <div>
-            <p className="font-semibold text-gray-900">{user?.name || 'User'}</p>
+            <p className="font-semibold text-gray-900">{user?.username || 'User'}</p>
             <p className="text-sm text-gray-600">{user?.email || 'user@example.com'}</p>
           </div>
         </div>

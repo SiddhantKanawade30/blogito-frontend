@@ -10,7 +10,7 @@ const Settings = ({ user, onLogout }) => {
     likes: true,
   });
   const [profileData, setProfileData] = useState({
-    name: user?.name || '',
+    username: user?.username || '',
     email: user?.email || '',
     bio: '',
   });
@@ -75,11 +75,11 @@ const Settings = ({ user, onLogout }) => {
             
             <form onSubmit={handleProfileUpdate} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
                 <input
                   type="text"
-                  name="name"
-                  value={profileData.name}
+                  name="username"
+                  value={profileData.username}
                   onChange={handleProfileChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />

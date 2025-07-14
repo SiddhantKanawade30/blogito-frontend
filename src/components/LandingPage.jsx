@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import { PenTool, Users, BookOpen } from 'lucide-react';
-import AuthModal from './AuthModal';
+import SigninCard from './SigninCard';
+import SignupCard from './SignupCard';
 
 const LandingPage = ({ onLogin, onSignup }) => {
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authMode, setAuthMode] = useState('login');
+  // Which card to show: null, 'signin', or 'signup'
+  const [activeCard, setActiveCard] = useState(null);
 
-  const openAuth = (mode) => {
-    setAuthMode(mode);
-    setShowAuthModal(true);
+  // Functions to open different cards
+  const openSignin = () => setActiveCard('signin');
+  const openSignup = () => setActiveCard('signup');
+  const closeCards = () => setActiveCard(null);
+
+  // Switch between cards
+  const switchToSignin = () => setActiveCard('signin');
+  const switchToSignup = () => setActiveCard('signup');
+
+  // Handle successful login (close card)
+  const handleLoginSuccess = async (email, password) => {
+    const result = await onLogin(email, password);
+    return result; // Let the card handle the result
   };
 
   return (
@@ -23,13 +34,13 @@ const LandingPage = ({ onLogin, onSignup }) => {
             </div>
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => openAuth('login')}
+                onClick={openSignin}
                 className="text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-200"
               >
                 Sign In
               </button>
               <button
-                onClick={() => openAuth('signup')}
+                onClick={openSignup}
                 className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
               >
                 Sign Up
@@ -52,13 +63,13 @@ const LandingPage = ({ onLogin, onSignup }) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => openAuth('signup')}
+                onClick={openSignup}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
               >
                 Start Writing Today
               </button>
               <button
-                onClick={() => openAuth('login')}
+                onClick={openSignin}
                 className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200"
               >
                 Sign In
@@ -123,14 +134,21 @@ const LandingPage = ({ onLogin, onSignup }) => {
         </div>
       </div>
 
-      {/* Auth Modal */}
-      {showAuthModal && (
-        <AuthModal
-          mode={authMode}
-          onClose={() => setShowAuthModal(false)}
-          onLogin={onLogin}
+      {/* Show signin card */}
+      {activeCard === 'signin' && (
+        <SigninCard
+          onClose={closeCards}
+          onLogin={handleLoginSuccess}
+          onSwitchToSignup={switchToSignup}
+        />
+      )}
+
+      {/* Show signup card */}
+      {activeCard === 'signup' && (
+        <SignupCard
+          onClose={closeCards}
           onSignup={onSignup}
-          onSwitchMode={(mode) => setAuthMode(mode)}
+          onSwitchToSignin={switchToSignin}
         />
       )}
     </div>

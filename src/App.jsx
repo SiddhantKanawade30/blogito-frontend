@@ -1,63 +1,115 @@
 import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import FeedPage from './components/FeedPage';
+import EmailVerification from './components/EmailVerification';
 import { getAuthToken, userAPI, authAPI } from './utils/api';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // Check if the current page is for email verification
+  const isEmailVerificationPage = window.location.pathname === '/verify-email' || window.location.search.includes('token=');
+  
+  // If it's email verification page, show that component
+  if (isEmailVerificationPage) {
+    return <EmailVerification />;
+  }
 
+  // State to track if user is logged in or not
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  
+  // State to store user information
+  const [currentUser, setCurrentUser] = useState(null);
+  
+  // State to show loading spinner while checking if user is logged in
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+
+  // When app first loads, check if user is already logged in
   useEffect(() => {
-    const checkAuth = async () => {
-      const token = getAuthToken();
-      if (token) {
+    const checkIfUserIsLoggedIn = async () => {
+      // Check if there's a saved login token
+      const savedToken = getAuthToken();
+      
+      if (savedToken) {
         try {
+          // Token exists, try to get user info from server
+          console.log('Found saved token, checking if still valid...');
           const userData = await userAPI.getMyProfile();
-          setUser(userData);
-          setIsAuthenticated(true);
+          
+          // Token is valid, user is logged in
+          setCurrentUser(userData);
+          setIsUserLoggedIn(true);
+          console.log('User is logged in:', userData);
         } catch (error) {
-          console.error('Auth check failed:', error);
-          authAPI.logout();
+          // Token is invalid or expired, log user out
+          console.error('Saved token is invalid:', error);
+          authAPI.logout(); // Remove the bad token
         }
       }
-      setLoading(false);
+      
+      // Done checking, hide loading spinner
+      setIsCheckingAuth(false);
     };
 
-    checkAuth();
-  }, []);
+    checkIfUserIsLoggedIn();
+  }, []); // Empty array means this runs once when app starts
 
-  const handleLogin = async (email, password) => {
+  // Function to handle user login
+  const handleUserLogin = async (email, password) => {
     try {
-      const response = await authAPI.signin({ email, password });
+      console.log('Trying to log in user...');
+      
+      // Try to log in with the backend
+      const response = await authAPI.signin(email, password);
+      
+      // Login successful, get user information
       const userData = await userAPI.getMyProfile();
-      setUser(userData);
-      setIsAuthenticated(true);
+      
+      // Update app state
+      setCurrentUser(userData);
+      setIsUserLoggedIn(true);
+      
+      console.log('Login successful!');
       return { success: true };
+      
     } catch (error) {
+      console.error('Login failed:', error);
       return { success: false, error: error.message };
     }
   };
 
-  const handleSignup = async (name, email, password) => {
+  // Function to handle user signup
+  const handleUserSignup = async (username, email, password) => {
     try {
-      await authAPI.signup({ name, email, password });
+      console.log('Trying to sign up user...');
+      
+      // Try to create account with the backend
+      await authAPI.signup(username, email, password);
+      
+      console.log('Signup successful!');
       return { 
         success: true, 
         message: 'Account created! Please check your email to verify your account.' 
       };
+      
     } catch (error) {
+      console.error('Signup failed:', error);
       return { success: false, error: error.message };
     }
   };
 
-  const handleLogout = () => {
+  // Function to handle user logout
+  const handleUserLogout = () => {
+    console.log('Logging out user...');
+    
+    // Remove login token and reset app state
     authAPI.logout();
-    setIsAuthenticated(false);
-    setUser(null);
+    setIsUserLoggedIn(false);
+    setCurrentUser(null);
+    
+    console.log('User logged out');
   };
 
-  if (loading) {
+  // Show loading spinner while checking authentication
+  if (isCheckingAuth) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -68,13 +120,26 @@ function App() {
     );
   }
 
+  // Main app content
+  
   return (
     <div className="min-h-screen bg-gray-50">
-      {!isAuthenticated ? (
-        <LandingPage onLogin={handleLogin} onSignup={handleSignup} />
+      {!isUserLoggedIn ? (
+        // User is not logged in, show landing page with login/signup
+        <LandingPage 
+          onLogin={handleUserLogin} 
+          onSignup={handleUserSignup} 
+        />
       ) : (
-        <FeedPage user={user} onLogout={handleLogout} />
+        // User is logged in, show the main app
+        <FeedPage 
+          user={currentUser} 
+          onLogout={handleUserLogout} 
+        />
       )}
+      <Routes>
+   <Route path="/" element={<FeedPage />} />
+   </Routes>
     </div>
   );
 }

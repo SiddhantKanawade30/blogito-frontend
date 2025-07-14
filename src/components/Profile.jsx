@@ -46,7 +46,7 @@ const Profile = ({ user }) => {
                 </span>
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">{user?.name || 'User'}</h1>
+                <h1 className="text-3xl font-bold text-gray-900 mb-2">{user?.username || 'User'}</h1>
                 <p className="text-gray-600 mb-4">Writer & Developer</p>
                 <div className="flex items-center space-x-4 text-sm text-gray-500">
                   <div className="flex items-center space-x-1">
