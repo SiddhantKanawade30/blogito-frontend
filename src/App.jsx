@@ -1,10 +1,10 @@
 import React from 'react'
-import LandingPage from './components/LandingPage'
+import Hero from './pages/Hero'
 
 const App = () => {
   return (
     <div>
-      <LandingPage />
+      <Hero />
     </div>
   )
 }

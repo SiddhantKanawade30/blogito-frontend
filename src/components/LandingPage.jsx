@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
 
-const LandingPage = () => {
+const LandingPage = ({setShowSignup}) => {
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans">
       {/* Hero Section */}
@@ -13,7 +13,7 @@ const LandingPage = () => {
           Welcome to Blogito – your personal space to write, read, and connect through words.
           Whether you're a writer or a reader, you'll love what we built for you.
         </p>
-        <button className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-900 transition">
+        <button onClick={()=>setShowSignup(true)} className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-900 transition">
           Get Started <ArrowRight size={18} />
         </button>
       </section>
