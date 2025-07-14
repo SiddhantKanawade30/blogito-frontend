@@ -1,156 +1,53 @@
-import React, { useState } from 'react';
-import { PenTool, Users, BookOpen } from 'lucide-react';
-import SigninCard from './SigninCard';
-import SignupCard from './SignupCard';
+import React from "react";
+import { ArrowRight } from "lucide-react";
 
-const LandingPage = ({ onLogin, onSignup }) => {
-  // Which card to show: null, 'signin', or 'signup'
-  const [activeCard, setActiveCard] = useState(null);
-
-  // Functions to open different cards
-  const openSignin = () => setActiveCard('signin');
-  const openSignup = () => setActiveCard('signup');
-  const closeCards = () => setActiveCard(null);
-
-  // Switch between cards
-  const switchToSignin = () => setActiveCard('signin');
-  const switchToSignup = () => setActiveCard('signup');
-
-  // Handle successful login (close card)
-  const handleLoginSuccess = async (email, password) => {
-    const result = await onLogin(email, password);
-    return result; // Let the card handle the result
-  };
-
+const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <PenTool className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold text-gray-900">Blogito</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={openSignin}
-                className="text-gray-700 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-200"
-              >
-                Sign In
-              </button>
-              <button
-                onClick={openSignup}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
-              >
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+    <div className="min-h-screen bg-white text-gray-800 font-sans">
       {/* Hero Section */}
-      <div className="pt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Share Your
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600"> Stories</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Join thousands of writers and readers on Blogito. Create, share, and discover amazing stories from around the world.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={openSignup}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
-              >
-                Start Writing Today
-              </button>
-              <button
-                onClick={openSignin}
-                className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl text-lg font-semibold hover:border-blue-600 hover:text-blue-600 transition-all duration-200"
-              >
-                Sign In
-              </button>
+      <section className="flex flex-col items-center justify-center text-center px-6 py-24 md:py-32">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          Share Stories, <br /> Inspire Readers
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mb-8">
+          Welcome to Blogito – your personal space to write, read, and connect through words.
+          Whether you're a writer or a reader, you'll love what we built for you.
+        </p>
+        <button className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-900 transition">
+          Get Started <ArrowRight size={18} />
+        </button>
+      </section>
+
+      {/* Feature Section */}
+      <section className="px-6 py-16 bg-gray-50">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2 className="text-3xl font-semibold mb-4">Why Blogito?</h2>
+          <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+            Built for modern creators and curious minds. Publish posts, engage with readers,
+            and grow your presence – all in one simple platform.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div>
+              <h3 className="text-xl font-medium mb-2">✍️ Write Freely</h3>
+              <p className="text-gray-600">Markdown support, autosave, and a distraction-free editor.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-medium mb-2">📈 Grow Audience</h3>
+              <p className="text-gray-600">SEO-optimized posts and shareable links to reach more people.</p>
+            </div>
+            <div>
+              <h3 className="text-xl font-medium mb-2">🔗 Easy Embeds</h3>
+              <p className="text-gray-600">Embed code for your blog or portfolio in one click.</p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Features Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <PenTool className="h-8 w-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Easy Writing</h3>
-              <p className="text-gray-600">
-                Powerful editor with markdown support, rich formatting, and distraction-free writing experience.
-              </p>
-            </div>
-
-            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="h-8 w-8 text-purple-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect</h3>
-              <p className="text-gray-600">
-                Build your audience, engage with readers, and connect with fellow writers in our community.
-              </p>
-            </div>
-
-            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <BookOpen className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Discover</h3>
-              <p className="text-gray-600">
-                Explore trending topics, find new voices, and discover stories that inspire you.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-3 gap-8 text-center text-white">
-              <div>
-                <div className="text-4xl font-bold mb-2">10K+</div>
-                <div className="text-blue-100">Active Writers</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">50K+</div>
-                <div className="text-blue-100">Stories Published</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">1M+</div>
-                <div className="text-blue-100">Monthly Readers</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Show signin card */}
-      {activeCard === 'signin' && (
-        <SigninCard
-          onClose={closeCards}
-          onLogin={handleLoginSuccess}
-          onSwitchToSignup={switchToSignup}
-        />
-      )}
-
-      {/* Show signup card */}
-      {activeCard === 'signup' && (
-        <SignupCard
-          onClose={closeCards}
-          onSignup={onSignup}
-          onSwitchToSignin={switchToSignin}
-        />
-      )}
+      {/* Footer */}
+      <footer className="px-6 py-10 bg-white text-center text-gray-500 text-sm">
+        © {new Date().getFullYear()} Blogito. Made with ❤️ by Siddhant.
+      </footer>
     </div>
   );
 };
