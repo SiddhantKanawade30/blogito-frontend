@@ -3,7 +3,7 @@
 
   const Settings = () => {
     // Email
-    const [email, setEmail] = useState("siddhant@example.com"); // default email (replace with actual user data)
+    const [email, setEmail] = useState(""); // default email (replace with actual user data)
     const [newEmail, setNewEmail] = useState("");
 
     // Password
