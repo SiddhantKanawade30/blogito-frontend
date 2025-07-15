@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 export const Login = ({ open, onClose, switchToSignup }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
+  const navigate = useNavigate()
 
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -12,12 +15,21 @@ export const Login = ({ open, onClose, switchToSignup }) => {
     const password = passwordRef.current.value;
 
     try {
-      await axios.post(`${backendUrl}/login`, {
+      const res = await axios.post(`${backendUrl}/api/auth/signin`, {
         email,
         password,
       });
-      onClose();
+
+      if(res){
+        onClose();
       alert("Login successful!");
+      navigate('/manager/feed')
+      }else{
+        alert("invalid credentials")
+      }
+      const token = res.data.token;
+      localStorage.setItem("authorization", `Bearer ${token}`);
+      
     } catch (error) {
       console.error("Login error:", error);
     }

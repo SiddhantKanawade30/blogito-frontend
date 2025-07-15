@@ -16,7 +16,7 @@ export const Signup = ({ open, onClose, switchToLogin }) => {
     const password = passwordRef.current.value;
 
     try {
-      await axios.post(`${backendUrl}/signup`, {
+      await axios.post(`${backendUrl}/api/auth/signup`, {
         userName,
         email,
         password,
@@ -86,6 +86,7 @@ export const Signup = ({ open, onClose, switchToLogin }) => {
   className="bg-black text-white hover:bg-gray-900 transition p-3 rounded-lg font-semibold"
   onClick={() => {
     alert("Email sent, please verify it.");
+    signup()
     onClose();
     switchToLogin();
   }}

@@ -37,19 +37,19 @@ const SideNavbar = () => {
 
         {/* Navigation */}
         <nav className="mt-4 flex flex-col space-y-2 px-4">
-            <div onClick={()=> navigate("/feed")}>
+            <div onClick={()=> navigate("/manager/feed")}>
           <NavItem icon={<Home size={20} />} label="Feed"  />
             </div>
 
-            <div onClick={()=> navigate("/create")}>
+            <div onClick={()=> navigate("/manager/create")}>
           <NavItem icon={<PlusCircle size={20} />} label="Create" />
             </div>
 
-            <div onClick={()=> navigate("/profile")}>
+            <div onClick={()=> navigate("/manager/profile")}>
           <NavItem icon={<User size={20} />} label="Profile" />
           </div>
 
-          <div onClick={()=> navigate("/settings")}>
+          <div onClick={()=> navigate("/manager/settings")}>
           <NavItem icon={<Settings size={20} />} label="Settings" />
           </div>
 

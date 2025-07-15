@@ -14,11 +14,24 @@ const CreateBlog = () => {
 
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL;
-      const response = await axios.post(`${backendUrl}/blogs`, {
+      const token = localStorage.getItem("authorization");
+
+
+
+       if (!token) {
+      alert("You must be logged in to publish a blog.");
+      return;
+    }
+
+      const response = await axios.post(`${backendUrl}/api/blogs`, {
         title,
         content,
         tags: tags.split(",").map((tag) => tag.trim()),
-      });
+      },
+      {
+        headers: {
+          authorization: `${token}`, 
+        }});
 
       alert("Blog published successfully!");
       // Clear inputs
