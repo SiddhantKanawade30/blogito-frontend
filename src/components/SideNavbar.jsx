@@ -58,7 +58,10 @@ const SideNavbar = () => {
         {/* Logout */}
         <div className="absolute bottom-0 w-full px-4 py-6 border-t">
           <button
-            
+            onClick={()=>{
+              localStorage.removeItem("authorization")
+              navigate("/")
+            }}
             className="flex items-center w-full space-x-3 text-gray-700 hover:text-red-500 transition"
           >
             <LogOut size={20} />

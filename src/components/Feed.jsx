@@ -1,58 +1,24 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-// Sample blog data (replace with API later)
-const sampleBlogs = [
-  {
-    id: 1,
-    author: "Jane Doe",
-    avatar: "https://i.pravatar.cc/150?img=1",
-    title: "10 Tips to Improve Your Writing",
-    content: "Writing is an art that can be refined. Here are some actionable tips that will help you write better...",
-    date: "July 13, 2025"
-  },
-  {
-    id: 2,
-    author: "Siddhant K.",
-    avatar: "https://i.pravatar.cc/150?img=12",
-    title: "Why React is Still King in 2025",
-    content: "React has maintained its dominance due to flexibility, community, and ecosystem support. Let’s dive deeper...",
-    date: "July 12, 2025"
-  },
-  {
-    id: 3,
-    author: "Alex Johnson",
-    avatar: "https://i.pravatar.cc/150?img=15",
-    title: "Mental Health for Developers",
-    content: "Working long hours in tech? Here’s how to keep your mind sharp and your stress low...",
-    date: "July 10, 2025"
-  },
-  
-  {
-    id: 2,
-    author: "Siddhant K.",
-    avatar: "https://i.pravatar.cc/150?img=12",
-    title: "Why React is Still King in 2025",
-    content: "React has maintained its dominance due to flexibility, community, and ecosystem support. Let’s dive deeper...",
-    date: "July 12, 2025"
-  },
-  {
-    id: 3,
-    author: "Alex Johnson",
-    avatar: "https://i.pravatar.cc/150?img=15",
-    title: "Mental Health for Developers",
-    content: "Working long hours in tech? Here’s how to keep your mind sharp and your stress low...",
-    date: "July 10, 2025"
-  },
-];
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Feed = () => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    // Simulate API fetch
-    setTimeout(() => {
-      setBlogs(sampleBlogs);
-    }, 500);
+    const fetchBlogs = async() =>{ 
+      try{
+        const res =  await axios.get(`${backendUrl}/api/blogs`)
+      setBlogs(res.data)
+      }catch(err){
+        console.error("Error fetching blogs:", err);
+        setBlogs([]); 
+      }
+     
+    }
+    fetchBlogs();
   }, []);
 
   return (
@@ -65,13 +31,13 @@ const Feed = () => {
           className="bg-white shadow-sm border rounded-xl p-6 transition hover:shadow-md"
         >
           <div className="flex items-center gap-4 mb-4">
-            <img
+            {/* <img
               src={blog.avatar}
               alt={blog.author}
               className="w-10 h-10 rounded-full object-cover"
-            />
+            /> */}
             <div>
-              <p className="font-semibold text-gray-800">{blog.author}</p>
+              <p className="font-semibold text-gray-800">{blog.author?.email || "Unknown author"}</p>
               <p className="text-xs text-gray-500">{blog.date}</p>
             </div>
           </div>
