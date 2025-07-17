@@ -130,13 +130,7 @@ const CreateBlog = () => {
           
           <div className="w-px h-6 bg-gray-300 mx-1"></div>
           
-          {/* Lists */}
-          <ToolbarButton onClick={() => formatText("insertUnorderedList")} title="Bullet List">
-            • List
-          </ToolbarButton>
-          <ToolbarButton onClick={() => formatText("insertOrderedList")} title="Numbered List">
-            1. List
-          </ToolbarButton>
+          
           
           <div className="w-px h-6 bg-gray-300 mx-1"></div>
           
