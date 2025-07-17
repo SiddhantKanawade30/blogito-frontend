@@ -15,7 +15,7 @@ export const Login = ({ open, onClose, switchToSignup }) => {
     const password = passwordRef.current.value;
 
     try {
-      const res = await axios.post(`${backendUrl}api/auth/signin`, {
+      const res = await axios.post(`${backendUrl}/api/auth/signin`, {
         email,
         password,
       });
