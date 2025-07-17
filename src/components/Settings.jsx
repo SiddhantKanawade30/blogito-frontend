@@ -1,12 +1,15 @@
-  import React, { useState } from "react";
+  import React, { useEffect, useState } from "react";
   import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
   const Settings = () => {
-    // Email
-    const [email, setEmail] = useState(""); // default email (replace with actual user data)
+    const navigate = useNavigate()
+    const token = localStorage.getItem("authorization");
+
+    const [email, setEmail] = useState(""); 
     const [newEmail, setNewEmail] = useState("");
 
-    // Password
+
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -15,21 +18,51 @@
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
+    
+    
+    useEffect(()=>{
+
+    const fetch = async function(){
+      try{
+        const response = await axios.get(`${backendUrl}/api/users/me`,{
+        headers : {
+          authorization : token
+        }
+      })
+
+      setEmail(response.data.email)
+      }catch(err){
+        console.error("Error fetching user data:", err.response?.data || err.message);
+      }
+      
+    }
+      fetch()
+    },[backendUrl])
+
     const updateEmail = async () => {
+
       if (!newEmail) {
         alert("Please enter a new email.");
         return;
       }
 
+      const email  = newEmail;
+
       try {
         setLoading(true);
         await axios.put(`${backendUrl}/api/users/update`, {
-          newEmail,
+          email,
+        },{
+          headers : {
+            authorization : `${token}`
+          }
         });
 
-        alert("Email updated successfully!");
+        alert("Email updated successfully!  please verify it ");
         setEmail(newEmail);
         setNewEmail("");
+        localStorage.removeItem("authorization")
+        navigate("/")
       } catch (error) {
         console.error("Email update failed:", error);
         alert("Failed to update email.");
@@ -48,12 +81,16 @@
         alert("New passwords do not match.");
         return;
       }
+      const password = newPassword
 
       try {
         setLoading(true);
         await axios.put(`${backendUrl}/api/users/update`, {
-          currentPassword,
-          newPassword,
+          password
+        },{
+          headers : {
+            authorization : `${token}`
+          }
         });
 
         alert("Password updated successfully!");

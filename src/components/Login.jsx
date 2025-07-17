@@ -20,18 +20,22 @@ export const Login = ({ open, onClose, switchToSignup }) => {
         password,
       });
 
-      if(res){
-        onClose();
+      
+      onClose();
       alert("Login successful!");
       navigate('/manager/feed')
-      }else{
-        alert("invalid credentials")
-      }
+     
       const token = res.data.token;
       localStorage.setItem("authorization", `Bearer ${token}`);
       
     } catch (error) {
       console.error("Login error:", error);
+
+       if (error.response && error.response.status === 401) {
+      alert("Invalid credentials or email not verified.");
+    } else {
+      alert("An error occurred. Please try again later.");
+    }
     }
   };
 

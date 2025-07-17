@@ -13,8 +13,8 @@ const VerifyEmail = () => {
       try {
         const backendUrl = import.meta.env.VITE_BACKEND_URL;
         await axios.get(`${backendUrl}/api/auth/verify-email?token=${token}`);
-        alert("Email verified successfully! Please log in.");
-        navigate("/login"); 
+        alert("Email verified successfully! Please go to login page and login");
+        
       } catch (error) {
         alert("Verification failed. Token may be invalid or expired.");
         console.error(error);
