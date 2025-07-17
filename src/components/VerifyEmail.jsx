@@ -16,13 +16,14 @@ const VerifyEmail = () => {
         alert("Email verified successfully! Please go to login page and login");
         
       } catch (error) {
-        alert("Verification failed. Token may be invalid or expired.");
+       
         console.error(error);
       }
     };
 
     if (token) {
       verifyEmail();
+       navigate("/")
     }
   }, [token, navigate]);
 

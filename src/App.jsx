@@ -13,13 +13,13 @@ import { Login } from './components/Login';
 const App = () => {
   return (
     <Routes>
-      
+
       <Route path="/" element={<Hero />} />
 
-  <Route path="/verify-email" element={<VerifyEmail />} />
-      {/* Protected dashboard layout with nested routes */}
+       <Route path="/verify-email" element={<VerifyEmail />} />
+      
       <Route path="/manager" element={<ManagerLayout />}>
-        <Route index element={<Feed />} /> {/* default route: /manager */}
+        <Route index element={<Feed />} />
         <Route path="feed" element={<Feed />} />
         <Route path="create" element={<CreateBlog />} />
         <Route path="settings" element={<Settings />} />
