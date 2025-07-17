@@ -45,7 +45,11 @@ const Feed = () => {
           <h3 className="text-xl font-semibold text-gray-900 mb-2">
             {blog.title}
           </h3>
-          <p className="text-gray-700">{blog.content}</p>
+          <div
+  className="text-gray-700 prose max-w-none"
+  dangerouslySetInnerHTML={{ __html: blog.content }}
+></div>
+
 
           <button className="mt-4 text-sm font-medium text-purple-600 hover:underline">
             Read more →
