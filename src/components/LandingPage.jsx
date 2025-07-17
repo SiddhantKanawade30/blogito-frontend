@@ -46,7 +46,7 @@ const LandingPage = ({setShowSignup}) => {
 
       {/* Footer */}
       <footer className="px-6 py-10 bg-white text-center text-gray-500 text-sm">
-        © {new Date().getFullYear()} Blogito. Made with ❤️ by Siddhant.
+        ©blogito {new Date().getFullYear()}
       </footer>
     </div>
   );
