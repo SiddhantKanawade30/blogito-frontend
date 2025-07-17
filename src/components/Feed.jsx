@@ -22,7 +22,7 @@ const Feed = () => {
   }, []);
 
   return (
-    <div className="mt-5 space-y-6 max-w-3xl mx-auto">
+    <div className="mt-5 space-y-10 max-w-3xl mx-10 ">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Latest Blogs</h2>
 
       {blogs.map((blog) => (

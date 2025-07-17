@@ -12,6 +12,7 @@ import { Login } from './components/Login';
 
 const App = () => {
   return (
+
     <Routes>
 
       <Route path="/" element={<Hero />} />
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="profile" element={<UserProfile />} />
       </Route>
     </Routes>
+   
   );
 };
 
