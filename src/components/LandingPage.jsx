@@ -1,52 +1,97 @@
-import React from "react";
-import { ArrowRight } from "lucide-react";
-
-const LandingPage = ({setShowSignup}) => {
+const LandingPage = ({ setShowSignup }) => {
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans">
-      {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center px-6 py-24 md:py-32">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Share Stories, <br /> Inspire Readers
-        </h1>
-        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mb-8">
-          Welcome to Blogito – your personal space to write, read, and connect through words.
-          Whether you're a writer or a reader, you'll love what we built for you.
-        </p>
-        <button onClick={()=>setShowSignup(true)} className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-900 transition">
-          Get Started <ArrowRight size={18} />
-        </button>
-      </section>
+    <div className="relative min-h-screen bg-white font-sans text-gray-800 overflow-hidden">
+      {/* Grid Pattern Background */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(0deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent),
+            linear-gradient(90deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent)
+          `,
+          backgroundSize: '50px 50px',
+          maskImage: 'radial-gradient(circle at center, rgba(0,0,0,1), rgba(0,0,0,0.2) 70%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, rgba(0,0,0,1), rgba(0,0,0,0.2) 70%, transparent 100%)'
+        }}
+      />
 
-      {/* Feature Section */}
-      <section className="px-6 py-16 bg-gray-50">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold mb-4">Why Blogito?</h2>
-          <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
-            Built for modern creators and curious minds. Publish posts, engage with readers,
-            and grow your presence – all in one simple platform.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 text-left">
-            <div>
-              <h3 className="text-xl font-medium mb-2">✍️ Write Freely</h3>
-              <p className="text-gray-600">Markdown support, autosave, and a distraction-free editor.</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium mb-2">📈 Grow Audience</h3>
-              <p className="text-gray-600">SEO-optimized posts and shareable links to reach more people.</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium mb-2">🔗 Easy Embeds</h3>
-              <p className="text-gray-600">Embed code for your blog or portfolio in one click.</p>
-            </div>
-          </div>
+      {/* Content */}
+      <div className="relative z-10 px-6 py-24 flex flex-col items-center text-center">
+        {/* Background UI Cards */}
+<div className="absolute  flex justify-center items-center -z-10 pointer-events-none">
+  <div className="relative w-[800px] h-[300px]">
+    {/* Main UI mockup */}
+    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-80 h-45 bg-white/70 rounded-xl shadow-xl backdrop-blur-md border border-black/10 ">
+      <div className="w-full h-full flex flex-col justify-between p-4">
+        <div className="bg-gray-300/50 h-4 w-1/2 rounded"></div>
+        <div className="bg-gray-300/40 h-24 rounded-md"></div>
+        <div className="flex gap-2">
+          <div className="bg-gray-300/50 h-3 w-1/4 rounded"></div>
+          <div className="bg-gray-300/50 h-3 w-1/3 rounded"></div>
         </div>
-      </section>
+      </div>
+    </div>
+
+    {/* Side chart card */}
+    <div className="absolute top-12 left-45 w-26 h-28 bg-white/60 rounded-xl  shadow-md backdrop-blur-md border border-black/10 ">
+      <div className="p-3 space-y-2">
+        <div className="bg-gray-300/50 h-3 w-2/3 rounded"></div>
+        <div className="bg-gray-300/40 h-10 rounded-md"></div>
+      </div>
+    </div>
+
+    {/* Map icon card */}
+    <div className="absolute top-20 border-black/10 right-40 w-32 h-20 bg-white/60 rounded-xl shadow-md backdrop-blur-md border  ">
+      <div className="p-3 space-y-2">
+        <div className="bg-gray-300/50 h-3 w-1/2 rounded"></div>
+        <div className="bg-gray-300/40 h-6 w-3/4 rounded-md"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight mt-30">
+          <span className="text-black">Solusi Software Disesuaikan </span>
+          <br />
+          <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+            untuk Bisnis Anda
+          </span>
+        </h1>
+
+        <p className="max-w-xl text-gray-600 mb-8">
+          Kami adalah Aseven, software house yang membantu menyelesaikan masalah
+          bisnis Anda dengan aplikasi yang efektif dan efisien.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-4 justify-center mb-16">
+          <button className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-900 transition">
+            Hubungi Kami
+          </button>
+          <button className="px-6 py-3 bg-white border border-gray-300 text-black rounded-md hover:bg-gray-100 transition">
+            Lihat Kisah Sukses
+          </button>
+        </div>
+
+        {/* Logos Row */}
+        <div className="flex flex-wrap justify-center items-center gap-8 grayscale opacity-80 mb-10">
+          <img src="/pln-logo.png" alt="PLN" className="h-10" />
+          <img src="/bobobox-logo.png" alt="Bobobox" className="h-10" />
+          <img src="/nv-logo.png" alt="NV" className="h-10" />
+          <img src="/tastyshop-logo.png" alt="Tasty Shop" className="h-10" />
+        </div>
+
+        {/* Bottom Navigation Links */}
+        <div className="flex space-x-6 text-gray-600 text-sm font-medium">
+          <a href="#success" className="hover:underline text-black border-b-2 border-yellow-400 pb-1">Kisah Sukses</a>
+          <a href="#layanan" className="hover:underline">Layanan</a>
+          <a href="#faq" className="hover:underline">FAQ</a>
+        </div>
+      </div>
 
       {/* Footer */}
-      <footer className="px-6 py-10 bg-white text-center text-gray-500 text-sm">
-        ©blogito {new Date().getFullYear()}
+      <footer className="text-center text-sm text-gray-400 mt-20 mb-6">
+        © Aseven {new Date().getFullYear()}
       </footer>
     </div>
   );

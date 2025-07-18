@@ -1,1 +1,15 @@
 @import "tailwindcss";
+.stars-bg {
+  background: #000 url('https://raw.githubusercontent.com/kevin-powell/stars-animation/main/stars.png') repeat top center;
+  animation: moveStars 200s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveStars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 10000px 5000px;
+  }
+}
