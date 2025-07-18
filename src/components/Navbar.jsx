@@ -41,7 +41,7 @@ const Navbar = ({ setShowSignup }) => {
           className="flex items-center space-x-2 cursor-pointer"
         >
           
-          <span className="text-2xl font-bold bg-gradient-to-r text-gray-300 bg-clip-text ">
+          <span className="text-2xl font-bold bg-gradient-to-r text-gray-600 bg-clip-text ">
             Blogito
           </span>
         </motion.div>
@@ -55,7 +55,7 @@ const Navbar = ({ setShowSignup }) => {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium
+              className="text-gray-600 hover:text-gray-900 transition-colors duration-300 font-medium
                          relative group cursor-pointer"
             >
               {item.name}

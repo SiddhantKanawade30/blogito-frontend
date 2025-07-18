@@ -16,14 +16,14 @@ const LandingPage = ({ setShowSignup }) => {
       />
 
       {/* Content */}
-      <div className="relative z-10 px-6 py-24 flex flex-col items-center text-center">
+      <div className="relative z-10 px-6 py-24 flex flex-col items-center text-center mt-15">
         {/* Background UI Cards */}
-<div className="absolute  flex justify-center items-center -z-10 pointer-events-none">
+<div className="absolute  flex justify-center items-center -z-10 pointer-events-none ">
   <div className="relative w-[800px] h-[300px]">
     {/* Main UI mockup */}
-    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-80 h-45 bg-white/70 rounded-xl shadow-xl backdrop-blur-md border border-black/10 ">
+    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-80 h-45 bg-white/70 rounded-xl shadow-2xl shadow-gray-500 backdrop-blur-md border border-black/10 ">
       <div className="w-full h-full flex flex-col justify-between p-4">
-        <div className="bg-gray-300/50 h-4 w-1/2 rounded"></div>
+        <div className=" h-4 w-1/2 rounded text-sm text-gray-500 ml-[-40px]">Blogito</div>
         <div className="bg-gray-300/40 h-24 rounded-md"></div>
         <div className="flex gap-2">
           <div className="bg-gray-300/50 h-3 w-1/4 rounded"></div>
@@ -33,7 +33,7 @@ const LandingPage = ({ setShowSignup }) => {
     </div>
 
     {/* Side chart card */}
-    <div className="absolute top-12 left-45 w-26 h-28 bg-white/60 rounded-xl  shadow-md backdrop-blur-md border border-black/10 ">
+    <div className="absolute  shadow-gray-400 top-12 left-45 w-26 h-28 bg-white/60 rounded-xl  shadow-2xl backdrop-blur-md border border-black/10 ">
       <div className="p-3 space-y-2">
         <div className="bg-gray-300/50 h-3 w-2/3 rounded"></div>
         <div className="bg-gray-300/40 h-10 rounded-md"></div>
@@ -41,7 +41,14 @@ const LandingPage = ({ setShowSignup }) => {
     </div>
 
     {/* Map icon card */}
-    <div className="absolute top-20 border-black/10 right-40 w-32 h-20 bg-white/60 rounded-xl shadow-md backdrop-blur-md border  ">
+    <div className="absolute top-20 border-black/10 right-40 w-32 h-20 shadow-gray-400 bg-white/60 rounded-xl shadow-2xl backdrop-blur-md border  ">
+      <div className="p-3 space-y-2">
+        <div className="bg-gray-300/50 h-3 w-1/2 rounded"></div>
+        <div className="bg-gray-300/40 h-6 w-3/4 rounded-md"></div>
+      </div>
+    </div>
+
+    <div className="absolute top-[-70px] border-black/10 right-70 w-25 h-25 bg-white/60 shadow-gray-250 rounded-xl shadow-2xl backdrop-blur-md border  ">
       <div className="p-3 space-y-2">
         <div className="bg-gray-300/50 h-3 w-1/2 rounded"></div>
         <div className="bg-gray-300/40 h-6 w-3/4 rounded-md"></div>
@@ -51,10 +58,10 @@ const LandingPage = ({ setShowSignup }) => {
 </div>
 
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight mt-30">
-          <span className="text-black">Solusi Software Disesuaikan </span>
+          <span className="text-black">Share your Blogs worldwide</span>
           <br />
-          <span className="bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-transparent bg-clip-text">
-            untuk Bisnis Anda
+          <span className="bg-gradient-to-r text-black  bg-clip-text">
+            Blogito made easy
           </span>
         </h1>
 
