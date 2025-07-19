@@ -1,4 +1,4 @@
-const LandingPage = ({ setShowSignup }) => {
+const LandingPage = ({ setShowSignup , setShowLogin }) => {
   return (
     <div className="relative min-h-screen bg-white font-sans text-gray-800 overflow-hidden">
       {/* Grid Pattern Background */}
@@ -16,12 +16,12 @@ const LandingPage = ({ setShowSignup }) => {
       />
 
       {/* Content */}
-      <div className="relative z-10 px-6 py-24 flex flex-col items-center text-center mt-15">
+      <div className="relative z-10 px-6 py-24 flex flex-col items-center text-center mt-20">
         {/* Background UI Cards */}
 <div className="absolute  flex justify-center items-center -z-10 pointer-events-none ">
   <div className="relative w-[800px] h-[300px]">
     {/* Main UI mockup */}
-    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-80 h-45 bg-white/70 rounded-xl shadow-2xl shadow-gray-500 backdrop-blur-md border border-black/10 ">
+    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-80 h-45 bg-white/70 rounded-xl shadow-2xl shadow-gray-500 backdrop-blur-md border border-black/10 ">
       <div className="w-full h-full flex flex-col justify-between p-4">
         <div className=" h-4 w-1/2 rounded text-sm text-gray-500 ml-[-40px]">Blogito</div>
         <div className="bg-gray-300/40 h-24 rounded-md"></div>
@@ -56,7 +56,9 @@ const LandingPage = ({ setShowSignup }) => {
     </div>
   </div>
 </div>
-
+<div className="absolute top-40 left-1/2 transform -translate-x-1/2 z-[-1] pointer-events-none">
+  <div className="w-[500px] h-[100px] top-10 rounded-full bg-gradient-to-r from-pink-400 via-purple-300 to-blue-400 opacity-50 blur-3xl" />
+</div>
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight mt-30">
           <span className="text-black">Share your Blogs worldwide</span>
           <br />
@@ -66,39 +68,39 @@ const LandingPage = ({ setShowSignup }) => {
         </h1>
 
         <p className="max-w-xl text-gray-600 mb-8">
-          Kami adalah Aseven, software house yang membantu menyelesaikan masalah
-          bisnis Anda dengan aplikasi yang efektif dan efisien.
+          Unleash your thoughts to the world.
+Write blogs that inspire, connect, and travel beyond borders.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 justify-center mb-16">
-          <button className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-900 transition">
-            Hubungi Kami
+          <button className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-900 transition" onClick={()=>setShowSignup(true)}>
+            Get started
           </button>
-          <button className="px-6 py-3 bg-white border border-gray-300 text-black rounded-md hover:bg-gray-100 transition">
-            Lihat Kisah Sukses
+          <button className="px-6 py-3 bg-white border border-gray-300 text-black rounded-md hover:bg-gray-100 transition" onClick={()=>setShowLogin(true)}>
+            Signin
           </button>
         </div>
 
         {/* Logos Row */}
         <div className="flex flex-wrap justify-center items-center gap-8 grayscale opacity-80 mb-10">
-          <img src="/pln-logo.png" alt="PLN" className="h-10" />
-          <img src="/bobobox-logo.png" alt="Bobobox" className="h-10" />
-          <img src="/nv-logo.png" alt="NV" className="h-10" />
-          <img src="/tastyshop-logo.png" alt="Tasty Shop" className="h-10" />
+          <img src="/pln-logo.png" alt="Github" className="h-10" />
+          <img src="/bobobox-logo.png" alt="twitter" className="h-10" />
+          <img src="/nv-logo.png" alt="Blogito" className="h-10" />
+          <img src="/tastyshop-logo.png" alt="exp" className="h-10" />
         </div>
 
         {/* Bottom Navigation Links */}
         <div className="flex space-x-6 text-gray-600 text-sm font-medium">
-          <a href="#success" className="hover:underline text-black border-b-2 border-yellow-400 pb-1">Kisah Sukses</a>
-          <a href="#layanan" className="hover:underline">Layanan</a>
+          <a href="#success" className="hover:underline text-black border-b-2 border-yellow-400 pb-1">About</a>
+          <a href="#layanan" className="hover:underline">Contact</a>
           <a href="#faq" className="hover:underline">FAQ</a>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="text-center text-sm text-gray-400 mt-20 mb-6">
-        © Aseven {new Date().getFullYear()}
+        © Blogito {new Date().getFullYear()}
       </footer>
     </div>
   );

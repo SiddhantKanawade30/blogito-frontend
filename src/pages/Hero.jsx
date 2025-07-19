@@ -21,7 +21,7 @@ const Hero = () => {
   return (
     <div>
       <Navbar setShowSignup={() => setShowSignup(true)} />
-      <LandingPage setShowSignup={() => setShowSignup(true)} />
+      <LandingPage setShowSignup={() => setShowSignup(true)} setShowLogin={()=>setShowLogin(true)} />
       <Signup
         open={showSignup}
         onClose={() => setShowSignup(false)}
