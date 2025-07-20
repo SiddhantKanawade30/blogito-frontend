@@ -58,7 +58,7 @@ const SideNavbar = () => {
       >
         {/* Profile Section */}
         <div className="flex items-center space-x-4 px-6 py-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
-          <div onClick={()=>navigate("/manager/profile")} className="w-12 h-12 cursor-pointer bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center shadow-md">
+          <div onClick={()=>navigate("/manager/profile")} className="w-12 h-12 cursor-pointer bg-gradient-to-br from-gray-500 to-gray-800 rounded-full flex items-center justify-center shadow-md">
             <span className="text-white font-bold text-lg">
               {userData.userName.charAt(0).toUpperCase()}
             </span>
