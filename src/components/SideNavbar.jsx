@@ -40,7 +40,7 @@ const SideNavbar = () => {
 
   return (
     <>
-      {/* Mobile Top Bar */}
+      {/* MobileBar */}
       <div className="md:hidden flex items-center justify-between bg-white border-b border-gray-200 px-6 py-4 shadow-lg fixed w-full z-50">
         <div className="text-xl font-bold text-gray-800">{userData.userName}</div>
         <button 
@@ -56,7 +56,7 @@ const SideNavbar = () => {
         className={`fixed top-0 left-0 h-full bg-white border-r border-gray-200 shadow-xl z-40 transform transition-transform duration-300 ease-in-out
         ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 w-72 flex flex-col`}
       >
-        {/* Profile Section */}
+        {/* ProfileSection */}
         <div className="flex items-center space-x-4 px-6 py-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
           <div onClick={()=>navigate("/manager/profile")} className="w-12 h-12 cursor-pointer bg-gradient-to-br from-gray-500 to-gray-800 rounded-full flex items-center justify-center shadow-md">
             <span className="text-white font-bold text-lg">
@@ -69,7 +69,7 @@ const SideNavbar = () => {
           </div>
         </div>
 
-        {/* Nav Links */}
+        {/* NavLinks */}
         <div className="flex-1 overflow-y-auto mt-2 px-4">
           <Section label="Quick Actions">
             <NavItem icon={<Home size={18} />} label="Feed" onClick={() => navigate("/manager/feed")} />
@@ -79,7 +79,7 @@ const SideNavbar = () => {
           </Section>
         </div>
 
-        {/* Logout Button */}
+        {/* LogoutButton */}
         <div className="px-4 py-6 border-t border-gray-200 bg-gradient-to-r from-white to-gray-50">
           <button
             onClick={() => {
@@ -94,7 +94,7 @@ const SideNavbar = () => {
         </div>
       </div>
 
-      {/* Overlay */}
+    
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
