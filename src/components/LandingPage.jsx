@@ -1,7 +1,7 @@
 const LandingPage = ({ setShowSignup , setShowLogin }) => {
   return (
     <div className="relative min-h-screen bg-white font-sans text-gray-800 overflow-hidden">
-      {/* Grid Pattern Background */}
+      {/* Grid Pattern  */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -20,7 +20,7 @@ const LandingPage = ({ setShowSignup , setShowLogin }) => {
         {/* Background UI Cards */}
 <div className="absolute  flex justify-center items-center -z-10 pointer-events-none ">
   <div className="relative w-[800px] h-[300px]">
-    {/* Main UI mockup */}
+    {/* MainUI  */}
     <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-80 h-45 bg-white/70 rounded-xl shadow-2xl shadow-gray-500 backdrop-blur-md border border-black/10 ">
       <div className="w-full h-full flex flex-col justify-between p-4">
         <div className=" h-4 w-1/2 rounded text-sm text-gray-500 ml-[-40px]">Blogito</div>
@@ -32,7 +32,7 @@ const LandingPage = ({ setShowSignup , setShowLogin }) => {
       </div>
     </div>
 
-    {/* Side chart card */}
+    
     <div className="absolute  shadow-gray-400 top-12 left-45 w-26 h-28 bg-white/60 rounded-xl  shadow-2xl backdrop-blur-md border border-black/10 ">
       <div className="p-3 space-y-2">
         <div className="bg-gray-300/50 h-3 w-2/3 rounded"></div>
@@ -40,7 +40,7 @@ const LandingPage = ({ setShowSignup , setShowLogin }) => {
       </div>
     </div>
 
-    {/* Map icon card */}
+   
     <div className="absolute top-20 border-black/10 right-40 w-32 h-20 shadow-gray-400 bg-white/60 rounded-xl shadow-2xl backdrop-blur-md border  ">
       <div className="p-3 space-y-2">
         <div className="bg-gray-300/50 h-3 w-1/2 rounded"></div>
@@ -72,7 +72,7 @@ const LandingPage = ({ setShowSignup , setShowLogin }) => {
 Write blogs that inspire, connect, and travel beyond borders.
         </p>
 
-        {/* CTA Buttons */}
+        
         <div className="flex flex-wrap gap-4 justify-center mb-16">
           <button className="px-6 py-3 bg-black text-white rounded-md hover:bg-gray-900 transition" onClick={()=>setShowSignup(true)}>
             Get started
@@ -82,7 +82,7 @@ Write blogs that inspire, connect, and travel beyond borders.
           </button>
         </div>
 
-        {/* Logos Row */}
+        {/* Logos  */}
         <div className="flex flex-wrap justify-center items-center gap-8 grayscale opacity-80 mb-10">
           <img src="/pln-logo.png" alt="Github" className="h-10" />
           <img src="/bobobox-logo.png" alt="twitter" className="h-10" />
