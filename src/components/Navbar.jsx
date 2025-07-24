@@ -63,7 +63,7 @@ const Navbar = ({ setShowSignup }) => {
           ))}
         </div>
 
-        {/* Desktop CTA Button */}
+        {/* Desktop Button */}
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
