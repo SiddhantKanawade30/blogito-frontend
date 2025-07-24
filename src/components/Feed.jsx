@@ -38,7 +38,7 @@ const Feed = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-4xl mx-auto px-6 py-8">
-        {/* Header Section */}
+      
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Latest Blogs</h1>
           <p className="text-gray-600">Discover the latest stories and insights from our community</p>
@@ -59,7 +59,7 @@ const Feed = () => {
                 key={blog.id}
                 className="bg-white shadow-sm border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-300 group"
               >
-                {/* Author Section */}
+                {/* Author  */}
                 <div className="flex items-center gap-4 mb-6">
                   
                   <div className="flex-1">
@@ -105,7 +105,7 @@ const Feed = () => {
           )}
         </div>
 
-        {/* Load More Section */}
+        {/* LoadMore  */}
         {blogs.length > 0 && (
           <div className="text-center mt-12">
             <button className="px-8 py-3 bg-white border-2 border-gray-300 text-gray-700 font-medium rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 shadow-sm">
