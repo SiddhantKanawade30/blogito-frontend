@@ -109,7 +109,7 @@ import { useNavigate } from "react-router-dom";
       <div className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow mt-8">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Account Settings</h2>
 
-        {/* Email Section */}
+        {/* Email  */}
         <div className="mb-8">
           <label className="block text-gray-600 mb-2">Current Email</label>
           <div className="w-full p-3 border border-gray-200 bg-gray-100 rounded-lg text-gray-700 mb-3">
@@ -136,7 +136,7 @@ import { useNavigate } from "react-router-dom";
 
         <hr className="my-6" />
 
-        {/* Password Section */}
+        {/* Password  */}
         <div className="mb-4">
           <label className="block text-gray-600 mb-2">Current Password</label>
           <input
