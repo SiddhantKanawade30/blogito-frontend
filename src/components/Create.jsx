@@ -18,11 +18,11 @@ const CreateBlog = () => {
     setIsPublishing(true);
     
     try {
-      // Simulate API call
+      
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       alert("Blog published successfully!");
-      // Clear inputs
+      
       setTitle("");
       setContent("");
       setTags("");
@@ -38,7 +38,7 @@ const CreateBlog = () => {
     }
   };
 
-  // Text formatting functions
+
   const formatText = (command, value = null) => {
     document.execCommand(command, false, value);
     editorRef.current.focus();
@@ -49,7 +49,7 @@ const CreateBlog = () => {
       const content = editorRef.current.innerHTML;
       setContent(content);
       
-      // Calculate word count
+     
       const text = editorRef.current.textContent || editorRef.current.innerText || "";
       const words = text.trim().split(/\s+/).filter(word => word.length > 0);
       setWordCount(words.length);
@@ -89,7 +89,7 @@ const CreateBlog = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
+        
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-lg border border-gray-200 mb-4">
             <Sparkles className="w-5 h-5 text-violet-600" />
@@ -120,7 +120,7 @@ const CreateBlog = () => {
             />
           </div>
 
-          {/* Rich Text Editor */}
+          
           <div className="mb-8">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
@@ -134,10 +134,10 @@ const CreateBlog = () => {
               </div>
             </div>
             
-            {/* Enhanced Toolbar */}
+            {/*Toolbar */}
             <div className="bg-gray-100 border-2 border-gray-300 rounded-t-2xl p-4">
               <div className="flex flex-wrap gap-2 items-center">
-                {/* Headings */}
+                
                 <div className="flex gap-1">
                   <ToolbarButton onClick={() => formatHeading(1)} title="Heading 1">
                     <span className="font-bold text-lg">H1</span>
@@ -152,7 +152,7 @@ const CreateBlog = () => {
                 
                 <ToolbarDivider />
                 
-                {/* Text Formatting */}
+               
                 <div className="flex gap-1">
                   <ToolbarButton onClick={() => formatText("bold")} title="Bold">
                     <Bold className="w-4 h-4" />
@@ -170,7 +170,7 @@ const CreateBlog = () => {
                 
                 <ToolbarDivider />
                 
-                {/* Alignment */}
+              
                 <div className="flex gap-1">
                   <ToolbarButton onClick={() => formatText("justifyLeft")} title="Align Left">
                     <AlignLeft className="w-4 h-4" />
@@ -185,7 +185,7 @@ const CreateBlog = () => {
                 
                 <ToolbarDivider />
                 
-                {/* Other Tools */}
+               
                 <div className="flex gap-1">
                   <ToolbarButton onClick={insertLink} title="Insert Link">
                     <Link className="w-4 h-4" />
@@ -200,7 +200,7 @@ const CreateBlog = () => {
                 
                 <ToolbarDivider />
                 
-                {/* Undo/Redo */}
+              
                 <div className="flex gap-1">
                   <ToolbarButton onClick={() => formatText("undo")} title="Undo">
                     <Undo className="w-4 h-4" />
@@ -212,7 +212,7 @@ const CreateBlog = () => {
               </div>
             </div>
             
-            {/* Editor */}
+          
             <div
               ref={editorRef}
               contentEditable
@@ -242,7 +242,7 @@ const CreateBlog = () => {
             </div>
           </div>
 
-          {/* Tags */}
+         
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-3">
               <Tag className="w-5 h-5 text-violet-600" />
@@ -259,7 +259,7 @@ const CreateBlog = () => {
             />
           </div>
 
-          {/* Publish Button */}
+          
           <div className="flex justify-center">
             <button
               onClick={handlePublish}
@@ -284,7 +284,7 @@ const CreateBlog = () => {
           </div>
         </div>
 
-        {/* Footer */}
+        
         <div className="text-center mt-8">
           <p className="text-gray-500 text-sm">
             Tip: Use <kbd className="bg-white px-2 py-1 rounded text-xs border border-gray-300 shadow-sm">Ctrl+B</kbd> for bold, 
