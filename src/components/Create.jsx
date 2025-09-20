@@ -1,5 +1,9 @@
 import React, { useState, useRef } from "react";
 import { FileText, Type, Bold, Italic, Underline, Strikethrough, AlignLeft, AlignCenter, AlignRight, Link, Quote, Undo, Redo, Hash, Tag, Send, Sparkles } from "lucide-react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const CreateBlog = () => {
   const [title, setTitle] = useState("");
@@ -7,32 +11,55 @@ const CreateBlog = () => {
   const [tags, setTags] = useState("");
   const [isPublishing, setIsPublishing] = useState(false);
   const [wordCount, setWordCount] = useState(0);
+  const [error, setError] = useState("");
   const editorRef = useRef(null);
+  const navigate = useNavigate();
 
   const handlePublish = async () => {
     if (!title || !content) {
-      alert("Title and content are required.");
+      setError("Title and content are required.");
       return;
     }
 
     setIsPublishing(true);
+    setError("");
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const token = localStorage.getItem("authorization");
+      if (!token) {
+        setError("Please log in to publish a blog.");
+        return;
+      }
+
+      const blogData = {
+        title,
+        content,
+        tags: tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+      };
+
+      const response = await axios.post(`${backendUrl}/api/blogs`, blogData, {
+        headers: {
+          Authorization: token,
+          'Content-Type': 'application/json'
+        }
+      });
       
-      alert("Blog published successfully!");
-      // Clear inputs
-      setTitle("");
-      setContent("");
-      setTags("");
-      setWordCount(0);
-      if (editorRef.current) {
-        editorRef.current.innerHTML = "";
+      if (response.status === 201 || response.status === 200) {
+        alert("Blog published successfully!");
+        // Clear inputs
+        setTitle("");
+        setContent("");
+        setTags("");
+        setWordCount(0);
+        if (editorRef.current) {
+          editorRef.current.innerHTML = "";
+        }
+        // Navigate to feed to see the new blog
+        navigate("/manager/feed");
       }
     } catch (error) {
       console.error("Error publishing blog:", error);
-      alert("Failed to publish blog.");
+      setError(error.response?.data?.message || "Failed to publish blog. Please try again.");
     } finally {
       setIsPublishing(false);
     }
@@ -258,6 +285,13 @@ const CreateBlog = () => {
               className="w-full p-4 border-2 border-gray-300 rounded-2xl outline-none focus:border-violet-500 focus:ring-4 focus:ring-violet-100 text-gray-900 placeholder-gray-400 transition-all duration-200 bg-gray-50 hover:bg-white hover:border-gray-400"
             />
           </div>
+
+          {/* Error Display */}
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-2xl">
+              <p className="text-red-600 text-sm font-medium">{error}</p>
+            </div>
+          )}
 
           {/* Publish Button */}
           <div className="flex justify-center">

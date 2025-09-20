@@ -54,9 +54,9 @@ const Feed = () => {
               <p className="text-gray-600">Be the first to share your thoughts with the community!</p>
             </div>
           ) : (
-            blogs.map((blog) => (
+            blogs.map((blog, index) => (
               <article
-                key={blog.id}
+                key={blog.id || `blog-${index}`}
                 className="bg-white shadow-sm border border-gray-200 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:border-gray-300 group"
               >
                 {/* Author Section */}

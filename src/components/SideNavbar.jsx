@@ -23,6 +23,12 @@ const SideNavbar = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        if (!token) {
+          console.error("No authorization token found");
+          setUserData({ userName: 'Guest', email: 'guest@example.com' });
+          return;
+        }
+        
         const response = await axios.get(`${backendUrl}/api/users/me`, {
           headers: {
             Authorization: token,
@@ -31,6 +37,8 @@ const SideNavbar = () => {
         setUserData(response.data);
       } catch (err) {
         console.error("Error fetching user data:", err.response?.data || err.message);
+        // Set fallback user data to prevent white screen
+        setUserData({ userName: 'Guest', email: 'guest@example.com' });
       }
     };
     fetchProfile();
@@ -42,7 +50,7 @@ const SideNavbar = () => {
     <>
       {/* Mobile Top Bar */}
       <div className="md:hidden flex items-center justify-between bg-white border-b border-gray-200 px-6 py-4 shadow-lg fixed w-full z-50">
-        <div className="text-xl font-bold text-gray-800">{userData.userName}</div>
+        <div className="text-xl font-bold text-gray-800">{userData.userName || 'User'}</div>
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2 hover:bg-gray-100 rounded-lg"
@@ -60,12 +68,12 @@ const SideNavbar = () => {
         <div className="flex items-center space-x-4 px-6 py-6 border-b border-gray-200 bg-gradient-to-r from-gray-50 to-white">
           <div onClick={()=>navigate("/manager/profile")} className="w-12 h-12 cursor-pointer bg-gradient-to-br from-gray-500 to-gray-800 rounded-full flex items-center justify-center shadow-md">
             <span className="text-white font-bold text-lg">
-              {userData.userName.charAt(0).toUpperCase()}
+              {userData.userName ? userData.userName.charAt(0).toUpperCase() : 'U'}
             </span>
           </div>
           <div className="flex-1 min-w-0">
-            <div className="font-bold text-gray-900 text-lg truncate">{userData.userName}</div>
-            <div className="text-sm text-gray-600 truncate">{userData.email}</div>
+            <div className="font-bold text-gray-900 text-lg truncate">{userData.userName || 'User'}</div>
+            <div className="text-sm text-gray-600 truncate">{userData.email || 'user@example.com'}</div>
           </div>
         </div>
 

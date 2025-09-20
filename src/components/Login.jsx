@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
-export const Login = ({ open, onClose, switchToSignup }) => {
+export const Login = ({ open, onClose, switchToSignup , setShowForgot}) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate()
@@ -89,6 +89,14 @@ export const Login = ({ open, onClose, switchToSignup }) => {
             Sign Up
           </span>
         </p>
+        <p className="text-sm text-center text-gray-600 mt-2">
+  <span
+    className="text-purple-600 hover:underline cursor-pointer"
+    onClick={() => setShowForgot(true)}
+  >
+    Forgot Password?
+  </span>
+</p>
       </div>
     </div>
   );

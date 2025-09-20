@@ -3,10 +3,12 @@ import LandingPage from '../components/LandingPage';
 import Navbar from '../components/Navbar';
 import { Signup } from '../components/Signup';
 import { Login } from '../components/Login';
+import { ForgotPassword } from '../components/ForgotPassword';
 
 const Hero = () => {
   const [showSignup, setShowSignup] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showForgot, setShowForgot] = useState(false);
 
   const handleSwitchToLogin = () => {
     setShowSignup(false);
@@ -32,6 +34,9 @@ const Hero = () => {
         onClose={() => setShowLogin(false)}
         switchToSignup={handleSwitchToSignup}
       />
+      
+      <ForgotPassword open={showForgot} onClose={() => setShowForgot(false)} />
+
     </div>
   );
 };
